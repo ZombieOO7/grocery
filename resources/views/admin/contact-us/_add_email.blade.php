@@ -1,0 +1,1 @@
+<a href="mailto:{{@$contact->user->email}}?Subject=Contact Us" target="_top">{{ @$contact->user->email }}</a>

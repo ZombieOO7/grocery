@@ -1,0 +1,1 @@
+ <div class="main_loader" style="display: none;"><img src="{{ URL::asset('/images/loader.svg') }}"></div>
