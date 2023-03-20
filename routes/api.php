@@ -32,6 +32,9 @@ Route::post('/forget_password', 'API\ResetPasswordController@forgotPassword');
 /** Category List */
 Route::post('/category-list','API\MasterController@categoryList');
 
+/** Sub Category List */
+Route::post('/sub-category-list','API\MasterController@subCategoryList');
+
 /** Banner List */
 Route::post('/banner-list','API\MasterController@bannerList');
 

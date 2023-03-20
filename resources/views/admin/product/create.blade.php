@@ -87,6 +87,7 @@
                                     {!! Form::select('category_id', @$categoryList, @$product->category_id,
                                     ['id' => 'category_id','class' =>'form-control selectpicker','placeholder' => __('formname.select')])
                                     !!}
+                                    <span class="categoryId"></span>
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
@@ -94,9 +95,10 @@
                                     class='rqvr'>*</sup>" ,['class'=>'col-form-label col-lg-3
                                 col-sm-12'],false) !!}
                                 <div class="col-lg-6 col-md-9 col-sm-12">
-                                    {!! Form::select('sub_category_id', [], @$product->category_id,
+                                    {!! Form::select('sub_category_id', @$subCategoryList??[], @$product->sub_category_id,
                                     ['id' => 'sub_category_id','class' =>'form-control selectpicker','placeholder' => __('formname.select')])
                                     !!}
+                                    <span class="subCategoryId"></span>
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">

@@ -79,7 +79,7 @@ class ProductController extends BaseController
                     return @$product->proper_created_at;
                 })
                 ->editColumn('title', function ($product) {
-                    return $this->getPartials($this->viewConstant .'_add_message', ['product' => $product, 'title'=>__('formname.subcategory.title')]);
+                    return $this->getPartials($this->viewConstant .'_add_message', ['product' => $product, 'title'=>__('formname.product.title')]);
                 })
                 ->addColumn('checkbox', function ($product) {
                     return $this->getPartials($this->viewConstant . '_add_checkbox', ['product' => @$product]);
@@ -111,12 +111,13 @@ class ProductController extends BaseController
         try {
             if (isset($uuid)) {
                 $product = $this->helper->detail($uuid);
+                $subCategoryList = $this->subCategoryList2($product->category_id);
             }
             $statusList = $this->properStatusList();
             $stockStatusList = $this->stockStatusList();
             $categoryList = $this->categoryList();
-            $title = isset($uuid) ? trans('formname.subcategory.update') : trans('formname.subcategory.create');
-            return view($this->viewConstant . 'create', ['product' => @$product, 'title' => @$title, 'statusList' => @$statusList,'categoryList'=>@$categoryList,'stockStatusList'=>@$stockStatusList]);
+            $title = isset($uuid) ? trans('formname.product.update') : trans('formname.product.create');
+            return view($this->viewConstant . 'create', ['product' => @$product, 'title' => @$title, 'statusList' => @$statusList,'categoryList'=>@$categoryList,'stockStatusList'=>@$stockStatusList,'subCategoryList'=>@$subCategoryList??[]]);
         } catch (Exception $e) {
             // abort(404);
             return Redirect::back()->with('error', $e->getMessage());
@@ -255,5 +256,13 @@ class ProductController extends BaseController
                             ->select('id','title')
                             ->get();
         return response()->json(['list'=>$productList]);       
+    }
+
+    public function subCategoryList2($categoryId){
+        $subCategories = [];
+        $subCategories = SubCategory::where('category_id',$categoryId)
+                            ->select('id','title')
+                            ->pluck('title','id');
+        return $subCategories;       
     }
 }

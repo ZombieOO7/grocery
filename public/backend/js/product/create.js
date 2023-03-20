@@ -42,6 +42,10 @@ $(document).ready(function() {
                 error.insertAfter('.shortDescriptionError');
             } else if (element.attr("name") == 'description') {
                 error.insertAfter('.descriptionError');
+            } else if (element.attr("name") == 'sub_category_id') {
+                error.insertAfter('.subCategoryId');
+            } else if (element.attr("name") == 'category_id') {
+                error.insertAfter('.categoryId');
             } else {
                 error.insertAfter(element);
             }
@@ -90,7 +94,6 @@ jQuery.validator.addMethod("cke_required", function(value, element) {
     return $(element).val().length > 0;
 }, "This field is required");
 $('#category_id').on('change', function() {
-        debugger;
         $.ajax({
             url: getSubCat,
             method: 'POST',

@@ -16,7 +16,7 @@ class Product extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'uuid','title','slug','status','category_id', 'stock_status','short_description','description','price'
+        'uuid','title','slug','status','sub_category_id','category_id', 'stock_status','short_description','description','price'
     ];
 
         /**
@@ -42,6 +42,9 @@ class Product extends BaseModel
 
     public function category(){
         return $this->belongsTo('App\Models\Category','category_id');
+    }
+    public function subCategory(){
+        return $this->belongsTo('App\Models\SubCategory','sub_category_id');
     }
 }
 ?>
