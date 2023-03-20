@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # open_ipps
 
 Basic laravel project start up. Initialise with admin database and some modules ready to use.
@@ -29,3 +30,6 @@ Basic laravel project start up. Initialise with admin database and some modules 
 
 
 #It works !!!
+=======
+# grocery
+>>>>>>> 702e52d0fe483ca2b96d5ba4d6dc40cd41081f43
