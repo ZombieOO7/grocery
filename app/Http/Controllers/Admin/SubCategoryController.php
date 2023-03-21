@@ -140,7 +140,7 @@ class SubCategoryController extends BaseController
             } else {
                 $msg = __('admin/messages.action_msg', ['action' => __('admin/messages.created'), 'type' => 'Sub Category']);
             }
-            return redirect()->route('category.index')->with('message', $msg);
+            return redirect()->route('subcategory.index')->with('message', $msg);
         } catch (Exception $e) {
             $this->helper->dbRollBack();
             return Redirect::back()->with('error', $e->getMessage());
